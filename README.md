@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+Project Name: Personality Quiz
+Team #: 10
+Team Members: Justin Hoang, Miguel Perez, Duc Minh Ngo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Main Concept:
+Our web application is an interactive personality quiz platform inspired by frameworks like MBTI and innate personality trait theories. The purpose of the app is to provide users with a fun way to explore their personality traits based on their choices in a series of situational and preference-based questions. Explain the problem it aims to solve: Helps users understand more about themselves in a fun and charming way. 
 
-## Available Scripts
+Core Features:
+Quiz System
+Results Page
+Answer-Based Characters/UI feedback.
+Quiz Progression Bar
+Shareable Result Link
+Feature Details:
+Quiz System
+Details: Displays a series of multiple-choice questions. Each answer maps to one or more personality traits. At the end, user responses are tallied to determine a personality type. Transitions between questions smoothly. User Interactions: Click on answer options to proceed. Button animations Prevent skipping without an answer.
+Result Page
+Details: Shows the user's personality type with a fun name, image, and detailed description. Explains why the user got that result based on their answers. Shows which other personalities the user is most/least compatible with. Offers “Try Again” and “Share” options. User Interactions: Read results and descriptions. Click to restart quiz. Click to copy result link or post to social media.
+User login/profile
+Questions
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Notes: Create big pool of questions, randomly select
+	Maybe create shareable links to open other users results (also create user accounts?)
