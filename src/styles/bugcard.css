@@ -1,0 +1,36 @@
+.bug-card {
+    background: rgb(255, 251, 210);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    font-family: 'KosugiMaru', sans-serif;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .bug-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .bug-img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+  }  
+  
+  .bug-card h2 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+  }
+  
+  .bug-card p {
+    font-size: 0.95rem;
+    margin: 6px 0;
+  }
+  
+  .bug-card .desc {
+    font-size: 0.9rem;
+    margin: 12px 0;
+  }
+  

@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'KosugiMaru';
+    src: url('../assets/fonts/KosugiMaru-Regular.ttf') format('truetype');
+  }
+  
+  * {
+    font-family: 'KosugiMaru', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+.about-bg {
+  --line-color: #7bb37b;
+  background-color: #A0D1A0;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, var(--line-color) 25%, var(--line-color) 26%, transparent 27%, transparent 74%, var(--line-color) 75%, var(--line-color) 76%, transparent 77%),
+    linear-gradient(90deg, transparent 24%, var(--line-color) 25%, var(--line-color) 26%, transparent 27%, transparent 74%, var(--line-color) 75%, var(--line-color) 76%, transparent 77%);
+  background-size: 55px 55px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 40px;
+}
+
+  
+  /* Back Button */
+  .back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #6FA56F;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .back-btn:hover {
+    background: #5C8A5C;
+  }
+  
+  /* Creature hover label */
+  .imgtxt {
+    width: fit-content;
+    height: fit-content;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .imgtxt span {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+    font-size: 2.5rem;
+    color: #FFF;
+    filter: drop-shadow(1px 1px 0 black) 
+            drop-shadow(-1px 1px 0 black)
+            drop-shadow(1px -1px 0 black)
+            drop-shadow(-1px -1px 0 black);
+    pointer-events: none;
+  }
+  
+  .imgtxt:hover span,
+  .imgtxt:focus span {
+    opacity: 1;
+  }
+
+  .creature-button-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }  
+  
