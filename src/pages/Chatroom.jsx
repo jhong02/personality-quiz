@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import '../styles/chatroom.css';
 import userIcon from '../assets/images/user1.png';
 import { Link } from 'react-router-dom';
-import NotificationButton from '../components/NotificationButton';
 import QuizChatroom from './QuizChatroom';
 import QuizNotification from './QuizNotification';
 import LoadingScreen from '../components/LoadingScreen';
@@ -29,7 +28,7 @@ export default function Chatroom() {
 
   useEffect(() => {
     setUsername(localStorage.getItem('username') || 'new_user');
-  
+
     const initialChats = {};
     chatUsernames.forEach(user => initialChats[user] = []);
     initialChats["mysterious_bug"].push({
@@ -37,10 +36,10 @@ export default function Chatroom() {
       sender: "Bot"
     });
     setChats(initialChats);
-  
+
     const loadingTimer = setTimeout(() => setLoading(false), 1000);
-    const inviteTimer = setTimeout(() => setShowInvite(true), 3000);
-  
+    const inviteTimer = setTimeout(() => setShowInvite(true), 5000);
+
     return () => {
       clearTimeout(loadingTimer);
       clearTimeout(inviteTimer);
@@ -80,7 +79,6 @@ export default function Chatroom() {
     <div className="chat-container">
       <aside className="sidebar">
         <Link to="/" className="logo">🪲 [ The Terrarium ]</Link>
-        <NotificationButton count={1} onClick={() => alert("New message functionality coming soon!")}/>
         <nav className="chatrooms">
           <p>Chatrooms</p>
           <ul>
