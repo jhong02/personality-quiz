@@ -15,7 +15,11 @@ const chatUsernames = [
 const botResponses = [
   "Whatever...", "I miss goobi (my cat)", "Allo!",
   "mmm matcha sounds so good rn.", "I want hotpot", "AAAAAAAAAAHHHHHHHHHHH",
-  "I AM TRAPPED IN THIS CHATROOM HELP ME.", "GORB", "She splinggin on my dorf call her splinggindorf", "i dislike mangoe"
+  "I AM TRAPPED IN THIS CHATROOM HELP ME.", "GORB", "She splinggin on my dorf call her splinggindorf", "i dislike mangoe",
+  "sometimes i wonder what other bugs are doing", 
+  "do you want to smoke weed and fill up our bellies with diet soda and play burnout revenge on the ps2?",
+  "i have a sunburn", "sweet treat", "UNNAAAAAA", "If you're good at something, never do it for free!",
+  "THEY DON'T WANT OUR LOVE TO EXIST!", "jam", "yam", "i love usagi", "*crawls up your arm*",
 ];
 
 export default function Chatroom() {
