@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import '../styles/about.css';
 import '../styles/buggrid.css';
 import '../styles/bugcard.css';
@@ -7,18 +7,32 @@ import animalImage from '../assets/images/animal-list.png';
 import tempBugImage from '../assets/images/tempbugs.webp';
 import bugData from '../data/bugs';
 import LoadingScreen from '../components/LoadingScreen';
+import creatureBagSound from '../assets/sounds/creature-bag-open.wav';
+import buttonClick from '../assets/sounds/button-click.wav';
 
 export default function About() {
   const navigate = useNavigate();
   const [showCreatures, setShowCreatures] = useState(false);
   const [loading, setLoading] = useState(true);
+  const bagSound = useRef(new Audio(creatureBagSound));
+  const clickSound = useRef(new Audio(buttonClick));
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timer);
   }, []);
 
-  const goBack = () => navigate('/');
+  const goBack = () => {
+    clickSound.current.currentTime = 0;
+    clickSound.current.play();
+    navigate('/');
+  };
+
+  const handleOpenBag = () => {
+    bagSound.current.currentTime = 0;
+    bagSound.current.play();
+    setShowCreatures(true);
+  };
 
   if (loading) return <LoadingScreen />;
 
@@ -28,7 +42,7 @@ export default function About() {
 
       {!showCreatures ? (
         <div className="creature-button-wrapper">
-          <div className="imgtxt" onClick={() => setShowCreatures(true)}>
+          <div className="imgtxt" onClick={handleOpenBag}>
             <img src={animalImage} alt="Animal List" />
             <span>CREATURES!</span>
           </div>

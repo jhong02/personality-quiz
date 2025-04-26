@@ -1,13 +1,15 @@
 import '../styles/home.css';
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import logo from '../assets/images/logo.png';
 import LoadingScreen from '../components/LoadingScreen';
+import buttonClickSound from '../assets/sounds/button-click.wav';
 
 export default function Home() {
   const navigate = useNavigate();
   const [showWarning, setShowWarning] = useState(false);
   const [loading, setLoading] = useState(true);
+  const buttonClick = useRef(new Audio(buttonClickSound));
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
@@ -21,11 +23,18 @@ export default function Home() {
       setTimeout(() => setShowWarning(false), 2000);
       return;
     }
+  
+    buttonClick.current.currentTime = 0;
+    buttonClick.current.play(); // 🔊 play sound
     localStorage.setItem("username", input);
-    navigate('/chatroom');
+    navigate('/chatroom'); // ➡️ navigate right away
   };
+  
 
-  const goToAbout = () => navigate('/about');
+  const goToAbout = () => {
+    buttonClick.current.play();
+    navigate('/about');
+  };
 
   if (loading) return <LoadingScreen />;
 

@@ -1,12 +1,15 @@
 .bug-card {
-    background: rgb(255, 251, 210);
-    border-radius: 15px;
-    padding: 25px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    font-family: 'KosugiMaru', sans-serif;
-    transition: transform 0.2s ease-in-out;
-  }
+  background: rgb(255, 251, 210);
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  font-family: 'KosugiMaru', sans-serif;
+  transition: transform 0.2s ease-in-out;
+  max-width: 600px;   /* 💡 less wide */
+  margin: 20px auto;  /* 💡 centered */
+}
+
   
   .bug-card:hover {
     transform: translateY(-5px);
