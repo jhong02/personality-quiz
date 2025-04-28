@@ -115,12 +115,14 @@ const bugs = [
     },
     {
       mbti: "ESTP",
-      name: "Fly",
-      title: "The Performer",
-      description: "Buzzes with energy and charm. Center of attention and full of jokes.",
-      compatible: ["Bee", "Grasshopper", "Centipede", "Worm"],
-      incompatible: ["Scorpion", "Moth", "Roly-Poly"]
-    },
+      name: "Beetle",
+      title: "The Trailblazer",
+      description: "Charges through life with confidence and spark! Loves challenges, new adventures, and showing off their shiny armor. Always the first to explore and the last to back down.",
+      compatible: ["Fly", "Grasshopper", "Centipede", "Scorpion"],
+      incompatible: ["Worm", "Leaf Bug", "Moth"],
+      image: "beetle.png" 
+    }
+    ,
     {
       mbti: "ESFP",
       name: "Fly",

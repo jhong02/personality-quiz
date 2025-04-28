@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
-import '../styles/chatroom.css';
-import userIcon from '../assets/images/user1.png';
 import { Link } from 'react-router-dom';
+import '../styles/chatroom.css';
 import QuizChatroom from './QuizChatroom';
 import QuizNotification from './QuizNotification';
 import LoadingScreen from '../components/LoadingScreen';
 
+import userIcon from '../assets/images/user1.png';
 import enterSound from '../assets/sounds/enter-sound.wav';
 import messageSent from '../assets/sounds/message-sent.wav';
 import messageReceived from '../assets/sounds/message-received.wav';
@@ -21,11 +21,13 @@ const chatUsernames = [
 const botResponses = [
   "Whatever...", "I miss goobi (my cat)", "Allo!",
   "mmm matcha sounds so good rn.", "I want hotpot", "AAAAAAAAAAHHHHHHHHHHH",
-  "I AM TRAPPED IN THIS CHATROOM HELP ME.", "GORB", "She splinggin on my dorf call her splinggindorf", "i dislike mangoe",
-  "sometimes i wonder what other bugs are doing",
+  "I AM TRAPPED IN THIS CHATROOM HELP ME.", "GORB", "She splinggin on my dorf call her splinggindorf",
+  "i dislike mangoe", "sometimes i wonder what other bugs are doing",
   "do you want to smoke weed and fill up our bellies with diet soda and play burnout revenge on the ps2?",
-  "i have a sunburn", "sweet treat", "UNNAAAAAA", "If you're good at something, never do it for free!",
-  "THEY DON'T WANT OUR LOVE TO EXIST!", "jam", "yam", "i love usagi", "*crawls up your arm*", "should i go get gas for my car tomorrow?"
+  "i have a sunburn", "sweet treat", "UNNAAAAAA",
+  "If you're good at something, never do it for free!",
+  "THEY DON'T WANT OUR LOVE TO EXIST!", "jam", "yam", "i love usagi",
+  "*crawls up your arm*", "should i go get gas for my car tomorrow?"
 ];
 
 export default function Chatroom() {
@@ -52,21 +54,15 @@ export default function Chatroom() {
     chatUsernames.forEach(user => {
       initialChats[user] = [];
     });
-    if (!initialChats["mysterious_bug"]) {
-      initialChats["mysterious_bug"] = [];
-    }
 
-    const saved = JSON.parse(localStorage.getItem("bugQuizProgress"));
-    if (saved?.chats?.length > 0) {
-      initialChats["mysterious_bug"] = saved.chats;
+    const savedQuiz = JSON.parse(localStorage.getItem('bugQuizProgress'));
+    if (savedQuiz?.chats?.length > 0) {
+      initialChats["mysterious_bug"] = savedQuiz.chats;
     }
 
     setChats(initialChats);
 
-    const loadingTimer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-
+    const loadingTimer = setTimeout(() => setLoading(false), 1000);
     const inviteTimer = setTimeout(() => setShowInvite(true), 5000);
 
     return () => {
@@ -75,25 +71,28 @@ export default function Chatroom() {
     };
   }, []);
 
-  // 🔊 Play enter sound when page loads
   useEffect(() => {
     if (!loading) {
       enterSfx.current.volume = 0.5;
-      enterSfx.current.play().catch(err => {
-        console.warn("Enter sound blocked:", err.message);
-      });
+      enterSfx.current.play().catch(err => console.warn("Enter sound blocked:", err.message));
     }
   }, [loading]);
 
-  // 🔔 Play notification sound when invite appears
   useEffect(() => {
     if (showInvite) {
       notificationSfx.current.volume = 0.8;
-      notificationSfx.current.play().catch(err => {
-        console.warn("Notification sound blocked:", err.message);
-      });
+      notificationSfx.current.play().catch(err => console.warn("Notification sound blocked:", err.message));
     }
   }, [showInvite]);
+
+  useEffect(() => {
+    if (currentChat && currentChat !== "mysterious_bug") {
+      const timeout = setTimeout(() => {
+        chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [chats, currentChat]);
 
   const sendMessage = () => {
     if (!currentChat || !message.trim()) return;
@@ -140,15 +139,6 @@ export default function Chatroom() {
     setShowInvite(false);
   };
 
-  useEffect(() => {
-    if (currentChat && currentChat !== "mysterious_bug") {
-      const timeout = setTimeout(() => {
-        chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 300);
-      return () => clearTimeout(timeout);
-    }
-  }, [chats, currentChat]);
-
   if (loading) return <LoadingScreen />;
 
   return (
@@ -158,8 +148,12 @@ export default function Chatroom() {
         <nav className="chatrooms">
           <p>Chatrooms</p>
           <ul>
-            {chatUsernames.map((user) => (
-              <li key={user} className={`chatroom-item ${currentChat === user ? 'active' : ''}`} onClick={() => openChat(user)}>
+            {chatUsernames.map(user => (
+              <li
+                key={user}
+                className={`chatroom-item ${currentChat === user ? 'active' : ''}`}
+                onClick={() => openChat(user)}
+              >
                 <img src={userIcon} alt={`${user} icon`} className="user-icon" />
                 {user}
               </li>
@@ -182,16 +176,24 @@ export default function Chatroom() {
           ) : currentChat === "mysterious_bug" ? (
             <QuizChatroom
               username={username}
-              chats={chats["mysterious_bug"]}
-              setChats={(newMessages) =>
-                setChats(prev => ({ ...prev, mysterious_bug: newMessages }))
-              }
+              initialChats={chats["mysterious_bug"]}
+              onChatUpdate={(newMessages) => {
+                const updated = { ...chats };
+                updated["mysterious_bug"] = newMessages;
+                setChats(updated);
+                localStorage.setItem("bugQuizProgress", JSON.stringify({ chats: newMessages }));
+              }}
             />
           ) : (
             <div className="chat-messages">
               {chats[currentChat]?.map((msg, index) => (
-                <div key={index} className={`message-wrapper ${msg.sender === 'You' ? 'right-wrapper' : 'left-wrapper'}`}>
-                  <div className={`message ${msg.sender === 'You' ? 'right' : 'left'}`}>{msg.text}</div>
+                <div
+                  key={index}
+                  className={`message-wrapper ${msg.sender === 'You' ? 'right-wrapper' : 'left-wrapper'}`}
+                >
+                  <div className={`message ${msg.sender === 'You' ? 'right' : 'left'}`}>
+                    {msg.text}
+                  </div>
                 </div>
               ))}
               <div ref={chatEndRef} />

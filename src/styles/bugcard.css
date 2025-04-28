@@ -6,34 +6,32 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   font-family: 'KosugiMaru', sans-serif;
   transition: transform 0.2s ease-in-out;
-  max-width: 600px;   /* 💡 less wide */
-  margin: 20px auto;  /* 💡 centered */
+  max-width: 600px;
+  margin: 20px auto;
 }
 
-  
-  .bug-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .bug-img {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    margin-bottom: 15px;
-  }  
-  
-  .bug-card h2 {
-    font-size: 1.8rem;
-    margin: 10px 0;
-  }
-  
-  .bug-card p {
-    font-size: 0.95rem;
-    margin: 6px 0;
-  }
-  
-  .bug-card .desc {
-    font-size: 0.9rem;
-    margin: 12px 0;
-  }
-  
+.bug-card:hover {
+  transform: translateY(-5px);
+}
+
+.bug-img {
+  width: 300px;         /* 🛠️ made bigger */
+  height: 300px;        /* 🛠️ made bigger */
+  object-fit: contain;
+  margin-bottom: 20px;  /* 🛠️ more breathing room */
+}
+
+.bug-card h2 {
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+.bug-card p {
+  font-size: 0.95rem;
+  margin: 6px 0;
+}
+
+.bug-card .desc {
+  font-size: 0.9rem;
+  margin: 12px 0;
+}

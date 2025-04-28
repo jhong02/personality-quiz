@@ -51,7 +51,11 @@ export default function About() {
         <div className="bug-grid">
           {bugData.map((bug, index) => (
             <div className="bug-card" key={index}>
-              <img className="bug-img" src={tempBugImage} alt={bug.name} />
+              <img
+                className="bug-img"
+                src={bug.image ? `/assets/images/${bug.image}` : tempBugImage}
+                alt={bug.name}
+              />
               <h2>{bug.name}</h2>
               <p><strong>MBTI:</strong> {bug.mbti}</p>
               <p><strong>Title:</strong> {bug.title}</p>

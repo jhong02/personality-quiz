@@ -1,11 +1,12 @@
 const BugCard = ({ bug, onSelect }) => {
-    return (
-      <div className="bug-card" onClick={() => onSelect(bug)}>
-        <img src={`/assets/images/${bug.image}`} alt={bug.name} />
-        <h3>{bug.name}</h3>
-      </div>
-    );
-  };
-  
-  export default BugCard;
-  
+  const imgSrc = bug.image ? `/assets/images/${bug.image}` : '/assets/images/tempbugs.webp';
+
+  return (
+    <div className="bug-card" onClick={() => onSelect(bug)}>
+      <img src={imgSrc} alt={bug.name} />
+      <h3>{bug.name}</h3>
+    </div>
+  );
+};
+
+export default BugCard;
