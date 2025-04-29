@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import introData from '../data/introData';
 import quizQuestions from '../data/quizData';
 import outroData from '../data/outroData';
@@ -6,7 +6,9 @@ import quizBotResponses from '../data/quizResponses';
 import bugs from '../data/bugs';
 import messageSentSound from '../assets/sounds/message-sent.wav';
 import messageReceivedSound from '../assets/sounds/message-received.wav';
+import quizResultSound from '../assets/sounds/quiz-result.wav';
 import tempBugImage from '../assets/images/tempbugs.webp';
+import html2canvas from 'html2canvas'; // 🆕 for screenshot
 import '../styles/chatroom.css';
 import '../styles/bugcard.css';
 
@@ -22,49 +24,50 @@ export default function QuizChatroom({ username }) {
 
   const sentSound = useRef(new Audio(messageSentSound));
   const receivedSound = useRef(new Audio(messageReceivedSound));
+  const resultSound = useRef(new Audio(quizResultSound));
   const chatEndRef = useRef(null);
   const hasStartedRef = useRef(false);
+  const cardRef = useRef(null); // 🆕
 
   const fullChatData = [...introData, ...quizQuestions, ...outroData];
   const currentQuestion = currentQuestionIndex < fullChatData.length ? fullChatData[currentQuestionIndex] : null;
-
   const quizProgress = Math.max(0, Math.min((currentQuestionIndex - introData.length) / quizQuestions.length, 1)) * 100;
-
   const delay = (ms) => new Promise(res => setTimeout(res, ms));
-  const showTyping = async (ms) => {
-    setTyping(true);
-    await delay(ms);
-    setTyping(false);
-  };
 
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const showQuestionInParts = async (questionText) => {
-    const parts = questionText.split('\n\n');
-    for (const part of parts) {
-      setChats(prev => [...prev, { sender: 'mysterious_bug', text: part.trim() }]);
-      receivedSound.current.play();
-      await showTyping(1000);
-    }
   };
 
   useEffect(() => {
     scrollToBottom();
   }, [chats, typing, loadingFinal]);
 
-  const startIntro = async () => {
-    await showTyping(1500);
+  const showTyping = useCallback(async () => {
+    setTyping(true);
+    await delay(1300);
+    setTyping(false);
+  }, []);
+
+  const showQuestionInParts = useCallback(async (questionText) => {
+    const parts = questionText.split('\n\n');
+    for (const part of parts) {
+      setChats(prev => [...prev, { sender: 'mysterious_bug', text: part.trim() }]);
+      receivedSound.current.play();
+      await showTyping();
+    }
+  }, [showTyping]);
+
+  const startIntro = useCallback(async () => {
+    await showTyping();
     await showQuestionInParts(introData[0].question);
     hasStartedRef.current = true;
     setCurrentQuestionIndex(0);
-  };
+  }, [showQuestionInParts, showTyping]);
 
   useEffect(() => {
     if (hasStartedRef.current) return;
     startIntro();
-  }, [username]);
+  }, [startIntro]);
 
   useEffect(() => {
     if (!loadingFinal) return;
@@ -82,9 +85,7 @@ export default function QuizChatroom({ username }) {
   );
 
   const handleAnswer = async (answer) => {
-    sentSound.current.currentTime = 0;
     sentSound.current.play();
-
     const updatedChats = [...chats, { sender: 'You', text: answer.text }];
     let updatedScores = { ...mbtiScores };
 
@@ -94,8 +95,7 @@ export default function QuizChatroom({ username }) {
 
     setChats(updatedChats);
     setMbtiScores(updatedScores);
-
-    await showTyping(1000);
+    await showTyping();
 
     if (currentQuestionIndex >= introData.length && currentQuestionIndex < introData.length + quizQuestions.length) {
       const quizIndex = currentQuestionIndex - introData.length;
@@ -103,8 +103,8 @@ export default function QuizChatroom({ username }) {
         ? quizBotResponses[quizIndex][Math.floor(Math.random() * quizBotResponses[quizIndex].length)]
         : "Hmmm... interesting choice.";
       setChats(prev => [...prev, { sender: 'mysterious_bug', text: randomResponse }]);
-      receivedSound.current.currentTime = 0;
       receivedSound.current.play();
+      await showTyping();
     }
 
     let nextIndex = currentQuestionIndex + 1;
@@ -123,8 +123,8 @@ export default function QuizChatroom({ username }) {
       const mbti = calculateMBTI(updatedScores);
       const result = bugs.find(bug => bug.mbti === mbti);
       setMatchedBug(result);
+      resultSound.current.play();
       setShowResult(true);
-
       setChats(prev => [...prev, { sender: 'mysterious_bug', text: `🌟 Personality Quiz Complete! 🌟` }]);
       receivedSound.current.play();
     }
@@ -139,6 +139,16 @@ export default function QuizChatroom({ username }) {
     setLoadingFinal(false);
     hasStartedRef.current = false;
     startIntro();
+  };
+
+  const handleDownload = async () => {
+    if (cardRef.current) {
+      const canvas = await html2canvas(cardRef.current);
+      const link = document.createElement('a');
+      link.download = 'my-bug-personality.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    }
   };
 
   if (!currentQuestion && !showResult) return null;
@@ -178,19 +188,19 @@ export default function QuizChatroom({ username }) {
       )}
 
       {showResult && matchedBug && (
-        <div className="bug-card slide-up">
+        <div ref={cardRef} className="bug-card slide-up">
           <img className="bug-img" src={tempBugImage} alt={matchedBug.name} />
           <h2>{matchedBug.name} — <em>{matchedBug.title}</em></h2>
           <p><strong>MBTI:</strong> {matchedBug.mbti}</p>
           <p className="desc"><strong>Description:</strong> {matchedBug.description}</p>
-          <p><strong>Best Bug Friends:</strong> {matchedBug.compatible.join(', ')}</p>
-          <p><strong>Bug Clashes:</strong> {matchedBug.incompatible.join(', ')}</p>
+          <p><strong>Best Bug Friends:</strong> {matchedBug.besties.join(', ')}</p>
+          <p><strong>Bug Clashes:</strong> {matchedBug.enemies.join(', ')}</p>
           <button className="restart-btn" onClick={handleRestart}>Restart Quiz</button>
+          <button className="share-btn" onClick={handleDownload}>Share Your Results!</button>
         </div>
       )}
 
       <div ref={chatEndRef} />
-
       <div className="quiz-progress-bar">
         <div className="quiz-progress-fill" style={{ width: `${quizProgress}%` }} />
       </div>

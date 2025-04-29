@@ -165,7 +165,13 @@ export default function Chatroom() {
       <main className="chat-window">
         <div className="chat-header">
           <p id="chatroom-title">{currentChat || 'Chatroom'}</p>
-          <button className="about-btn" onClick={() => alert("Welcome to The Terrarium!")}>about</button>
+          <Link
+            to="/about"
+            className="about-btn no-style-link"
+            onClick={() => buttonClickSfx.current.play()}
+          >
+            about
+          </Link>
         </div>
 
         <div id="chat-messages-container">
@@ -215,7 +221,16 @@ export default function Chatroom() {
         )}
       </main>
 
-      {showInvite && <QuizNotification onClick={handleInviteClick} />}
+      {showInvite && (
+  <QuizNotification
+    onClick={handleInviteClick}
+    onIgnore={() => {
+      setShowInvite(false);
+      setTimeout(() => setShowInvite(true), 3000);
+    }}
+  />
+)}
+
     </div>
   );
 }

@@ -436,13 +436,16 @@
 }
 
 .restart-btn {
-  background-color: #ffe0e0;
-  border: 1px solid #ffa1a1;
-  padding: 10px 16px;
+  margin-top: 30px;         /* More space above */
+  padding: 14px 28px;       /* Bigger size */
+  font-size: 1.1rem;        /* Larger text */
+  background-color: #fcdada;
+  border: 2px solid #ff9c9c;
   border-radius: 10px;
+  color: #4b0000;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .restart-btn:hover {
@@ -558,4 +561,61 @@
   }
 }
 
+.no-style-link {
+  text-decoration: none;
+  font-weight: normal;
+  color: inherit;
+  font-size: medium;
+}
 
+
+.quiz-invite-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  color: #333;
+  padding: 1.2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: popup-slide 0.4s ease-out;
+  font-family: 'KosugiMaru', sans-serif;
+  max-width: 300px;
+  z-index: 10;
+}
+
+.quiz-invite-text {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.quiz-invite-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.invite-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #a8d8a8;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.invite-btn:hover {
+  background: #8ecb8e;
+}
+
+.invite-btn.ignore {
+  background: #ffd5d5;
+}
+
+.invite-btn.ignore:hover {
+  background: #f8bfbf;
+}

@@ -1,5 +1,5 @@
 .bug-card {
-  background: rgb(255, 251, 210);
+  background: rgb(255, 255, 255);
   border-radius: 15px;
   padding: 25px;
   text-align: center;
@@ -34,4 +34,19 @@
 .bug-card .desc {
   font-size: 0.9rem;
   margin: 12px 0;
+}
+
+.share-btn {
+  margin-top: 10px;
+  background-color: #e0ffe0;
+  border: 1px solid #89c789;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.share-btn:hover {
+  background-color: #b8f0b8;
 }
