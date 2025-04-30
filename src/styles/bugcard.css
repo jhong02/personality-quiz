@@ -15,11 +15,20 @@
 }
 
 .bug-img {
-  width: 300px;         /* 🛠️ made bigger */
-  height: 300px;        /* 🛠️ made bigger */
+  width: 80%;
+  max-width: 250px;
+  height: auto;
   object-fit: contain;
-  margin-bottom: 20px;  /* 🛠️ more breathing room */
+  margin-bottom: 15px;
 }
+
+@media (min-width: 768px) {
+  .bug-img {
+    width: 200px;
+    max-width: 100%;
+  }
+}
+
 
 .bug-card h2 {
   font-size: 1.8rem;
@@ -49,4 +58,16 @@
 
 .share-btn:hover {
   background-color: #b8f0b8;
+}
+
+.screenshot-mode {
+  width: 600px !important;
+  transform: scale(1) !important;
+  position: fixed !important;
+  left: 50% !important;
+  top: 50% !important;
+  z-index: 9999 !important;
+  pointer-events: none;
+  background: white;
+  translate: -50% -50%;
 }

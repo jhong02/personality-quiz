@@ -8,7 +8,7 @@ import messageSentSound from '../assets/sounds/message-sent.wav';
 import messageReceivedSound from '../assets/sounds/message-received.wav';
 import quizResultSound from '../assets/sounds/quiz-result.wav';
 import tempBugImage from '../assets/images/tempbugs.webp';
-import html2canvas from 'html2canvas'; // 🆕 for screenshot
+import html2canvas from 'html2canvas';
 import '../styles/chatroom.css';
 import '../styles/bugcard.css';
 
@@ -27,7 +27,9 @@ export default function QuizChatroom({ username }) {
   const resultSound = useRef(new Audio(quizResultSound));
   const chatEndRef = useRef(null);
   const hasStartedRef = useRef(false);
-  const cardRef = useRef(null); // 🆕
+  const cardRef = useRef(null);
+  const hiddenCardRef = useRef(null);
+
 
   const fullChatData = [...introData, ...quizQuestions, ...outroData];
   const currentQuestion = currentQuestionIndex < fullChatData.length ? fullChatData[currentQuestionIndex] : null;
@@ -65,8 +67,9 @@ export default function QuizChatroom({ username }) {
   }, [showQuestionInParts, showTyping]);
 
   useEffect(() => {
-    if (hasStartedRef.current) return;
-    startIntro();
+    if (!hasStartedRef.current) {
+      startIntro();
+    }
   }, [startIntro]);
 
   useEffect(() => {
@@ -141,69 +144,242 @@ export default function QuizChatroom({ username }) {
     startIntro();
   };
 
+//skip to results, delete later
+  const handleSkipToResult = () => {
+    const mbti = calculateMBTI(mbtiScores);
+    const result = bugs.find(bug => bug.mbti === mbti || bug.mbti === 'ENFP');
+    setMatchedBug(result);
+    setShowResult(true);
+    setChats(prev => [...prev, { sender: 'mysterious_bug', text: `🌟 Personality Quiz Complete! 🌟` }]);
+    receivedSound.current.play();
+  };  
+  //skip to results, delete later
+  
   const handleDownload = async () => {
-    if (cardRef.current) {
-      const canvas = await html2canvas(cardRef.current);
-      const link = document.createElement('a');
-      link.download = 'my-bug-personality.png';
-      link.href = canvas.toDataURL();
-      link.click();
-    }
+    if (!hiddenCardRef.current) return;
+  
+    const canvas = await html2canvas(hiddenCardRef.current, {
+      backgroundColor: '#ffffff',
+      useCORS: true,
+      scale: 4,
+    });
+  
+    const link = document.createElement('a');
+    link.download = 'my-bug-personality.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
   };
-
-  if (!currentQuestion && !showResult) return null;
-
+  
   return (
-    <div className="chat-messages">
-      {chats.map((msg, index) => (
-        <div key={index} className={`message-wrapper ${msg.sender === 'You' ? 'right-wrapper' : 'left-wrapper'} slide-up`}>
-          <div className={`message ${msg.sender === 'You' ? 'right' : 'left'}`}>{msg.text}</div>
-        </div>
-      ))}
-
-      {typing && (
-        <div className="message-wrapper left-wrapper slide-up">
-          <div className="message left typing-indicator">
-            mysterious_bug is typing<span className="dot"></span><span className="dot"></span><span className="dot"></span>
+    <>
+      <button
+        style={{
+          position: 'fixed',
+          top: 10,
+          right: 10,
+          padding: '8px 12px',
+          backgroundColor: '#444',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '6px',
+          fontSize: '0.9rem',
+          zIndex: 9999,
+          cursor: 'pointer'
+        }}
+        onClick={() => {
+          const mockBug = bugs.find(b => b.name === 'Beetle');
+          setMatchedBug(mockBug);
+          setShowResult(true);
+        }}
+      >
+        Skip to Result
+      </button>
+  
+      <div className="chat-messages">
+        {chats.map((msg, index) => (
+          <div key={index} className={`message-wrapper ${msg.sender === 'You' ? 'right-wrapper' : 'left-wrapper'} slide-up`}>
+            <div className={`message ${msg.sender === 'You' ? 'right' : 'left'}`}>{msg.text}</div>
           </div>
-        </div>
-      )}
-
-      {loadingFinal && (
-        <div className="message-wrapper left-wrapper slide-up">
-          <div className="message left">
-            Calculating your bug type{'.'.repeat(dotCount)}
+        ))}
+  
+        {typing && (
+          <div className="message-wrapper left-wrapper slide-up">
+            <div className="message left typing-indicator">
+              mysterious_bug is typing<span className="dot"></span><span className="dot"></span><span className="dot"></span>
+            </div>
           </div>
+        )}
+  
+        {loadingFinal && (
+          <div className="message-wrapper left-wrapper slide-up">
+            <div className="message left">
+              Calculating your bug type{'.'.repeat(dotCount)}
+            </div>
+          </div>
+        )}
+  
+        {!showResult && !typing && !loadingFinal && currentQuestion?.answers?.length > 0 && (
+          <div className="answer-buttons">
+            {currentQuestion.answers.map((answer, i) => (
+              <button key={i} className="answer-btn" onClick={() => handleAnswer(answer)}>
+                {answer.text}
+              </button>
+            ))}
+          </div>
+        )}
+  
+        {showResult && matchedBug && (
+          <div className="result-card-wrapper">
+            <div ref={cardRef} className="bug-modal-card slide-up">
+              <h2 className="bug-name-title">
+                {matchedBug.name} – <em>{matchedBug.title}</em>
+              </h2>
+              <img
+                className="bug-img"
+                src={matchedBug.image ? `/assets/images/${matchedBug.image}` : tempBugImage}
+                alt={matchedBug.name}
+              />
+              <p className="desc"><strong>Description:</strong> {matchedBug.description}</p>
+  
+              <div className="traits-flex">
+                <div className="trait-box strengths-box">
+                  <p><strong>Strengths:</strong></p>
+                  <ul>{matchedBug.strengths?.map((s, i) => <li key={i}>{s}</li>)}</ul>
+                </div>
+                <div className="trait-box weaknesses-box">
+                  <p><strong>Weaknesses:</strong></p>
+                  <ul>{matchedBug.weaknesses?.map((s, i) => <li key={i}>{s}</li>)}</ul>
+                </div>
+              </div>
+  
+              <div className="vibe-box">
+                <p><strong>Vibes:</strong></p>
+                <div className="vibe-lines">
+                  {matchedBug.taglines?.map((line, i) => (
+                    <div key={i} className="vibe-line"><em>{line}</em></div>
+                  ))}
+                </div>
+              </div>
+  
+              <div className="friend-grid">
+                <p><strong>Besties:</strong></p>
+                <div className="friend-icons">
+                  {matchedBug.besties?.map(name => {
+                    const bug = bugs.find(b => b.name === name);
+                    return (
+                      <div className="friend-item" key={name}>
+                        <img src={bug?.image ? `/assets/images/${bug.image}` : tempBugImage} alt={name} className="friend-icon" />
+                        <span>{name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+  
+              <div className="friend-grid">
+                <p><strong>Enemies:</strong></p>
+                <div className="friend-icons">
+                  {matchedBug.enemies?.map(name => {
+                    const bug = bugs.find(b => b.name === name);
+                    return (
+                      <div className="friend-item" key={name}>
+                        <img src={bug?.image ? `/assets/images/${bug.image}` : tempBugImage} alt={name} className="friend-icon" />
+                        <span>{name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+  
+              <div className="result-buttons">
+                <button className="restart-btn" onClick={handleRestart}>Restart Quiz</button>
+                <button className="share-btn" onClick={handleDownload}>Share Your Results!</button>
+              </div>
+            </div>
+          </div>
+        )}
+  
+        {/* 🫥 Hidden full-width desktop version for high-res download */}
+        {showResult && matchedBug && (
+          <div
+            ref={hiddenCardRef}
+            className="bug-modal-card"
+            style={{
+              position: 'absolute',
+              left: '-9999px',
+              top: 0,
+              width: '600px',
+              transform: 'scale(1)',
+              zIndex: -1
+            }}
+          >
+            <h2 className="bug-name-title">
+              {matchedBug.name} – <em>{matchedBug.title}</em>
+            </h2>
+            <img
+              className="bug-img"
+              src={matchedBug.image ? `/assets/images/${matchedBug.image}` : tempBugImage}
+              alt={matchedBug.name}
+            />
+            <p className="desc"><strong>Description:</strong> {matchedBug.description}</p>
+  
+            <div className="traits-flex">
+              <div className="trait-box strengths-box">
+                <p><strong>Strengths:</strong></p>
+                <ul>{matchedBug.strengths?.map((s, i) => <li key={i}>{s}</li>)}</ul>
+              </div>
+              <div className="trait-box weaknesses-box">
+                <p><strong>Weaknesses:</strong></p>
+                <ul>{matchedBug.weaknesses?.map((s, i) => <li key={i}>{s}</li>)}</ul>
+              </div>
+            </div>
+  
+            <div className="vibe-box">
+              <p><strong>Vibes:</strong></p>
+              <div className="vibe-lines">
+                {matchedBug.taglines?.map((line, i) => (
+                  <div key={i} className="vibe-line"><em>{line}</em></div>
+                ))}
+              </div>
+            </div>
+  
+            <div className="friend-grid">
+              <p><strong>Besties:</strong></p>
+              <div className="friend-icons">
+                {matchedBug.besties?.map(name => {
+                  const bug = bugs.find(b => b.name === name);
+                  return (
+                    <div className="friend-item" key={name}>
+                      <img src={bug?.image ? `/assets/images/${bug.image}` : tempBugImage} alt={name} className="friend-icon" />
+                      <span>{name}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+  
+            <div className="friend-grid">
+              <p><strong>Enemies:</strong></p>
+              <div className="friend-icons">
+                {matchedBug.enemies?.map(name => {
+                  const bug = bugs.find(b => b.name === name);
+                  return (
+                    <div className="friend-item" key={name}>
+                      <img src={bug?.image ? `/assets/images/${bug.image}` : tempBugImage} alt={name} className="friend-icon" />
+                      <span>{name}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
+  
+        <div ref={chatEndRef} />
+        <div className="quiz-progress-bar">
+          <div className="quiz-progress-fill" style={{ width: `${quizProgress}%` }} />
         </div>
-      )}
-
-      {!showResult && !typing && !loadingFinal && currentQuestion?.answers?.length > 0 && (
-        <div className="answer-buttons">
-          {currentQuestion.answers.map((answer, i) => (
-            <button key={i} className="answer-btn" onClick={() => handleAnswer(answer)}>
-              {answer.text}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {showResult && matchedBug && (
-        <div ref={cardRef} className="bug-card slide-up">
-          <img className="bug-img" src={tempBugImage} alt={matchedBug.name} />
-          <h2>{matchedBug.name} — <em>{matchedBug.title}</em></h2>
-          <p><strong>MBTI:</strong> {matchedBug.mbti}</p>
-          <p className="desc"><strong>Description:</strong> {matchedBug.description}</p>
-          <p><strong>Best Bug Friends:</strong> {matchedBug.besties.join(', ')}</p>
-          <p><strong>Bug Clashes:</strong> {matchedBug.enemies.join(', ')}</p>
-          <button className="restart-btn" onClick={handleRestart}>Restart Quiz</button>
-          <button className="share-btn" onClick={handleDownload}>Share Your Results!</button>
-        </div>
-      )}
-
-      <div ref={chatEndRef} />
-      <div className="quiz-progress-bar">
-        <div className="quiz-progress-fill" style={{ width: `${quizProgress}%` }} />
       </div>
-    </div>
-  );
+    </>
+  );  
 }

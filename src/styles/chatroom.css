@@ -619,3 +619,23 @@
 .invite-btn.ignore:hover {
   background: #f8bfbf;
 }
+
+.result-buttons {
+  display: flex;
+  flex-direction: column;  /* ⬆️ stack vertically */
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.result-buttons button {
+  width: 220px;
+  padding: 14px 0;
+  font-weight: bold;
+  font-family: 'KosugiMaru', sans-serif;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+}

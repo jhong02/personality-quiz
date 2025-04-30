@@ -1,170 +1,227 @@
+/* Modal Overlay */
 .bug-modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   z-index: 999;
+  padding: 40px 20px;
+  overflow-y: auto;
 }
 
+/* Modal Card */
 .bug-modal-card {
-  max-height: 90vh;        /* Prevents content from going off screen */
-  overflow-y: auto;        /* Allows scrolling */
-  padding: 20px;
   background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
   width: 90%;
   max-width: 600px;
-  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  animation: popUp 0.3s ease forwards;
+
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  /* No inner scroll */
+  max-height: none;
+  overflow: visible;
 }
 
-
-@keyframes popUp {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+/* Bug Name and Title */
+.bug-title-block {
+  background: #fffbee;
+  border: 2px solid #ffd966;
+  border-radius: 10px;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  font-family: 'KosugiMaru', sans-serif;
 }
 
+.bug-title-block h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+.bug-title-block h2 em {
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: normal;
+}
+
+/* Bug Image */
+.bug-img-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.bug-img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+/* Traits Layout */
+.traits-flex {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.trait-box {
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 220px;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.strengths-box {
+  background-color: #dbf2da;
+  border: 1px solid #7bbf79;
+}
+
+.weaknesses-box {
+  background-color: #fddada;
+  border: 1px solid #cc7a7a;
+}
+
+.trait-box ul {
+  padding-left: 16px;
+  margin-top: 5px;
+}
+
+/* Vibe Lines */
+.vibe-box {
+  background-color: #dff6ff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.vibe-line {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin: 3px 0;
+}
+
+/* Friends Section */
+.friend-grid {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.friend-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.friend-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+}
+
+.friend-icon {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+/* Mini Bug Card (grid view) */
 .bug-mini-card {
-    width: 70%;
-    aspect-ratio: 1 / 1;
-    background: rgb(255, 251, 210);
-    border-radius: 20px;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  @media (min-width: 768px) {
-    .bug-mini-card {
-      width: 250px;  /* 🔁 fixed size in grid mode */
-    }
-  }  
-  
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  background: rgb(255, 251, 210);
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .bug-mini-card:hover {
   transform: translateY(-5px);
 }
 
 .bug-mini-img {
-    width: 75%;
-    height: 75%;
-    object-fit: contain;
-    margin-bottom: 12px;
-  }
-  
-  @media (min-width: 768px) {
-    .bug-mini-img {
-      width: 85%;
-      height: 85%;
-    }
-  }  
-  
-  .bug-mini-name {
-    font-size: 2rem; /* 🛠 bigger font size */
-    font-weight: bold;
-  }
-  
-  .friend-grid {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .friend-icons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 50px;
-    margin-top: 10px;
-  }
-  
-  .friend-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80px;
-  }
-  
-  .friend-icon {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-  }
-  
-  /* Bug Detail Modal styles */
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
 
-.bug-modal-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    overflow-y: auto;
-    padding: 20px;
+.bug-mini-name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Responsive Tweaks */
+@media (min-width: 768px) {
+  .bug-mini-card {
+    width: 250px;
   }
-  
-  .bug-modal-card {
-    background: rgb(255, 255, 255);
-    padding: 25px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 600px;
-    width: 90%;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    animation: popUp 0.3s ease forwards;
+
+  .bug-mini-img {
+    width: 85%;
+    height: 85%;
   }
-  
-  @keyframes popUp {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-  
-  .friend-grid {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
+
   .friend-icons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 10px;
+    gap: 30px;
   }
-  
-  .friend-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80px;
-  }
-  
+
   .friend-icon {
-    width: 85px;
-    height: 85px;
-    object-fit: contain;
+    width: 100px;
+    height: 100px;
   }
-  
-  @media (min-width: 768px) {
-    .friend-icons {
-      gap: 30px;
-    }
-  
-    .friend-item {
-      width: 100px;
-    }
-  
-    .friend-icon {
-      width: 100px;
-      height: 100px;
-    }
+
+  .friend-item {
+    width: 100px;
   }
-  
+}
+
+/* Popup Animation */
+@keyframes popUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Background Scroll Lock (used on <body> in React) */
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+.result-card-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}

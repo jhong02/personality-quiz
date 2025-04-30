@@ -46,11 +46,11 @@ export default function About() {
       <button className="back-btn" onClick={goBack}>Back!</button>
 
       <div className="about-intro">
-  <p>This is a personality quiz inspired by MBTI and <a href="https://iseej.github.io/LovePawsona/" target="_blank" rel="noopener noreferrer">Izon Falzo's Love Pawsona</a>. Please check it out too!</p>
-  <p>I created this quiz for fun and as a little personal project for myself. Please share it around with friends!</p>
-  <p>I would love feedback if you wanna provide it heheh.</p>
-  <p>Art by my gorlfriend, code by: <a href="https://github.com/jhong02" target="_blank" rel="noopener noreferrer">github.com/jhong02</a></p>
-</div>
+        <p>This is a personality quiz inspired by MBTI and <a href="https://iseej.github.io/LovePawsona/" target="_blank" rel="noopener noreferrer">Izon Falzo's Love Pawsona</a>. Please check it out too!</p>
+        <p>I created this quiz for fun and as a little personal project for myself. Please share it around with friends!</p>
+        <p>I would love feedback if you wanna provide it heheh.</p>
+        <p>Art by my gorlfriend, code by: <a href="https://github.com/jhong02" target="_blank" rel="noopener noreferrer">github.com/jhong02</a></p>
+      </div>
 
       {!showCreatures ? (
         <div className="creature-button-wrapper">
@@ -85,49 +85,54 @@ export default function About() {
       {selectedBug && (
         <div className="bug-modal-overlay" onClick={() => setSelectedBug(null)}>
           <div className="bug-modal-card" onClick={(e) => e.stopPropagation()}>
-            <img
-              className="bug-img"
-              src={selectedBug.image ? `/assets/images/${selectedBug.image}` : tempBugImage}
-              alt={selectedBug.name}
-            />
-            <h2>{selectedBug.name} — <em>{selectedBug.title}</em></h2>
-            <p><strong>MBTI:</strong> {selectedBug.mbti}</p>
+            <h2 className="bug-name-title">{selectedBug.name} – <em>{selectedBug.title}</em></h2>
+            <img className="bug-img" src={selectedBug.image ? `/assets/images/${selectedBug.image}` : tempBugImage} alt={selectedBug.name} />
             <p className="desc"><strong>Description:</strong> {selectedBug.description}</p>
 
-            {/* Besties Section */}
+            <div className="traits-flex">
+              <div className="trait-box strengths-box">
+                <p><strong>Strengths:</strong></p>
+                <ul>{selectedBug.strengths.map((s, i) => <li key={i}>{s}</li>)}</ul>
+              </div>
+              <div className="trait-box weaknesses-box">
+                <p><strong>Weaknesses:</strong></p>
+                <ul>{selectedBug.weaknesses.map((s, i) => <li key={i}>{s}</li>)}</ul>
+              </div>
+            </div>
+
+            <div className="vibe-box">
+              <p><strong>Vibes:</strong></p>
+              <div className="vibe-lines">
+                {selectedBug.taglines.map((line, i) => (
+                  <div key={i} className="vibe-line"><em>{line}</em></div>
+                ))}
+              </div>
+            </div>
+
             <div className="friend-grid">
               <p><strong>Besties:</strong></p>
               <div className="friend-icons">
-                {(selectedBug.besties || []).map(friendName => {
-                  const friendBug = bugData.find(b => b.name === friendName);
+                {selectedBug.besties.map(name => {
+                  const bug = bugData.find(b => b.name === name);
                   return (
-                    <div className="friend-item" key={friendName}>
-                      <img
-                        src={friendBug?.image ? `/assets/images/${friendBug.image}` : tempBugImage}
-                        alt={friendName}
-                        className="friend-icon"
-                      />
-                      <span>{friendName}</span>
+                    <div className="friend-item" key={name}>
+                      <img src={bug?.image ? `/assets/images/${bug.image}` : tempBugImage} alt={name} className="friend-icon" />
+                      <span>{name}</span>
                     </div>
                   );
                 })}
               </div>
             </div>
 
-            {/* Enemies Section */}
             <div className="friend-grid">
               <p><strong>Enemies:</strong></p>
               <div className="friend-icons">
-                {(selectedBug.enemies || []).map(enemyName => {
-                  const enemyBug = bugData.find(b => b.name === enemyName);
+                {selectedBug.enemies.map(name => {
+                  const bug = bugData.find(b => b.name === name);
                   return (
-                    <div className="friend-item" key={enemyName}>
-                      <img
-                        src={enemyBug?.image ? `/assets/images/${enemyBug.image}` : tempBugImage}
-                        alt={enemyName}
-                        className="friend-icon"
-                      />
-                      <span>{enemyName}</span>
+                    <div className="friend-item" key={name}>
+                      <img src={bug?.image ? `/assets/images/${bug.image}` : tempBugImage} alt={name} className="friend-icon" />
+                      <span>{name}</span>
                     </div>
                   );
                 })}

@@ -124,3 +124,9 @@
     margin: 0 auto;
   }
   
+  .temp-result-card {
+    margin-top: 30px;
+    border: 2px dashed #ffc800;
+    background-color: #fffdee;
+  }
+  
