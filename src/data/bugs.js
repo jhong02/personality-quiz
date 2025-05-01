@@ -5,7 +5,7 @@ const bugs = [
     title: "The Strategist",
     description: "Strategic, focused, always planning ten steps ahead. Prefers alone time to scheme out big moves.",
     besties: ["Spider", "Moth", "Ant", "Leaf Bug"],
-    enemies: ["Fly", "Grasshopper", "Worm"],
+    enemies: ["Dragon Fly", "Grasshopper", "Worm"],
     strengths: ["Master planner", "Emotionally detached in crises", "Independent and focused"],
     weaknesses: ["Overthinks everything", "Can come off cold", "Keeps others at arm's length"],
     taglines: ["Silently judging, actively plotting.", "I foresaw this.", "Plans within plans within plans.", "Trust issues, but make it tactical.", "I work best in the shadows."]
@@ -16,7 +16,7 @@ const bugs = [
     title: "The Thinker",
     description: "Curious and cerebral. Always weaving ideas and theories. Lives for quiet reflection and exploration.",
     besties: ["Stick Bug", "Scorpion", "Shrimp", "Moth", "Beetle"],
-    enemies: ["Mosquito", "Fly", "Worm"],
+    enemies: ["Mosquito", "Dragon Fly", "Worm"],
     image: "spider.png",
     strengths: ["Analytical and curious", "Creative with ideas", "Thinks deeply before acting"],
     weaknesses: ["Forgets real-world tasks", "Avoids emotional stuff", "Easily distracted by new theories"],
@@ -28,7 +28,7 @@ const bugs = [
     title: "The Commander",
     description: "Leads the colony with confidence and drive. Loves structure and gets things done—efficiently.",
     besties: ["Scorpion", "Mosquito", "Stick Bug", "Spider"],
-    enemies: ["Butterfly", "Leaf Bug", "Fly"],
+    enemies: ["Roly-Poly", "Leaf Bug", "Dragon Fly"],
     image: "ant.webp",
     strengths: ["Strong leadership skills", "Always on schedule", "Logical problem solver"],
     weaknesses: ["Can be bossy", "Too results-focused", "Struggles with emotional messes"],
@@ -51,7 +51,7 @@ const bugs = [
     title: "The Mystic",
     description: "Quiet and dreamy. Glows with inner wisdom and emotional depth.",
     besties: ["Scorpion", "Shrimp", "Leaf Bug", "Spider"],
-    enemies: ["Grasshopper", "Mosquito", "Fly", "Beetle"],
+    enemies: ["Grasshopper", "Mosquito", "Dragon Fly", "Beetle"],
     image: "moth.png",
     strengths: ["Empathetic", "Reflective", "Mysteriously wise"],
     weaknesses: ["Emotionally overloaded", "Too withdrawn", "Overly idealistic"],
@@ -73,7 +73,7 @@ const bugs = [
     name: "Bee",
     title: "The Nurturer",
     description: "Builds the hive and keeps everyone connected. Leads with kindness and energy.",
-    besties: ["Leaf Bug", "Fly", "Moth", "Ladybug"],
+    besties: ["Leaf Bug", "Dragon Fly", "Moth", "Ladybug"],
     enemies: ["Scorpion", "Spider", "Roly-Poly"],
     image: "bee.webp",
     strengths: ["Brings the group together", "Emotionally intelligent", "Motivates others with kindness"],
@@ -98,7 +98,7 @@ const bugs = [
     title: "The Grounder",
     description: "Keeps things steady, rolls with the rules. Handles pressure with grace.",
     besties: ["Ladybug", "Mosquito", "Scorpion", "Worm"],
-    enemies: ["Stick Bug", "Fly", "Worm", "Beetle"],
+    enemies: ["Stick Bug", "Dragon Fly", "Worm", "Beetle"],
     image: "roly-poly.png",
     strengths: ["Responsible", "Consistent", "Protective"],
     weaknesses: ["Rigid under change", "Too reserved", "Avoids risk"],
@@ -122,7 +122,7 @@ const bugs = [
     title: "The Enforcer",
     description: "Direct, efficient, and not afraid to sting. Demands results.",
     besties: ["Ant", "Worm", "Roly-Poly", "Stick Bug"],
-    enemies: ["Worm", "Leaf Bug", "Fly"],
+    enemies: ["Worm", "Leaf Bug", "Dragon Fly"],
     strengths: ["Straightforward", "Decisive", "Gets things done"],
     weaknesses: ["Too blunt", "Overbearing", "Dismisses emotions"],
     taglines: ["Results first, feelings later.", "I came. I bit. I conquered.", "Order over chaos.", "No-nonsense buzz.", "I mean business (and buzzing)."]
@@ -132,7 +132,7 @@ const bugs = [
     name: "Worm",
     title: "The Helper",
     description: "Digs deep in relationships. Supports others and likes building structure from the ground up.",
-    besties: ["Bee", "Ladybug", "Fly", "Mosquito"],
+    besties: ["Bee", "Ladybug", "Dragon Fly", "Mosquito"],
     enemies: ["Scorpion", "Spider", "Moth", "Beetle"],
     strengths: ["Caring", "Patient", "Hard-working"],
     weaknesses: ["Overextends for others", "Fears conflict", "Avoids attention"],
@@ -144,7 +144,7 @@ const bugs = [
     title: "The Tactician",
     description: "Moves swiftly and carefully. Quiet observer with sharp reflexes and instincts.",
     besties: ["Worm", "Grasshopper", "Scorpion", "Spider", "Beetle"],
-    enemies: ["Bee", "Fly", "Worm"],
+    enemies: ["Bee", "Dragon Fly", "Worm"],
     strengths: ["Quick thinker", "Cool under pressure", "Independent"],
     weaknesses: ["Aloof", "Emotionally distant", "Avoids commitment"],
     taglines: ["Many legs, zero hesitation.", "Silent but strategic.", "Think fast. Move faster.", "No drama, just action.", "Loner with a mission."]
@@ -165,7 +165,7 @@ const bugs = [
     name: "Beetle",
     title: "The Trailblazer",
     description: "Charges through life with confidence and spark! Loves challenges, new adventures, and showing off their shiny armor. Always the first to explore and the last to back down.",
-    besties: ["Fly", "Grasshopper", "Centipede", "Scorpion"],
+    besties: ["Dragon Fly", "Grasshopper", "Centipede", "Scorpion"],
     enemies: ["Worm", "Leaf Bug", "Moth"],
     image: "beetle.png",
     strengths: ["Bold", "Energetic", "Adventurous"],
@@ -182,7 +182,7 @@ const bugs = [
     image: "dragonfly.png",
     strengths: ["Fun-loving", "Spontaneous", "Captivates a crowd"],
     weaknesses: ["Easily distracted", "Avoids seriousness", "Needs attention"],
-    taglines: ["Life's a stage, and I'm buzzing.", "Too fly to be shy.", "Loud, proud, and funny.", "Oops, did I cause chaos again?", "You hear me before you see me."]
+    taglines: ["Life's a stage, and I'm buzzing.", "Too Fly to be shy.", "Loud, proud, and funny.", "Oops, did I cause chaos again?", "You hear me before you see me."]
   }
 ];
 
