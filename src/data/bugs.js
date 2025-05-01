@@ -87,9 +87,10 @@ const bugs = [
     description: "Weird, vibrant, and ever-curious. A sea-bug that bounces between ideas and people.",
     besties: ["Leaf Bug", "Moth", "Stick Bug", "Worm"],
     enemies: ["Mosquito", "Roly-Poly", "Ant"],
+    image: "shrimp.png",
     strengths: ["Enthusiastic", "Creative explorer", "Warm and playful"],
     weaknesses: ["Scattered focus", "Avoids structure", "Can feel misunderstood"],
-    taglines: ["New day, new obsession.", "Floating through chaos with flair.", "Catch me if you can.", "Random? Always.", "Sea bug, land soul."]
+    taglines: ["Wait a minute... Is this a bug??", "Are you telling me....", "Catch me if you can.", "Random? Always.", "Sea bug, land soul."]
   },
   {
     mbti: "ISTJ",
@@ -173,11 +174,12 @@ const bugs = [
   },
   {
     mbti: "ESFP",
-    name: "Fly",
+    name: "Dragon Fly",
     title: "The Performer",
     description: "Buzzes with energy and charm. Center of attention and full of jokes.",
     besties: ["Bee", "Grasshopper", "Centipede", "Worm", "Beetle"],
     enemies: ["Scorpion", "Moth", "Roly-Poly"],
+    image: "dragonfly.png",
     strengths: ["Fun-loving", "Spontaneous", "Captivates a crowd"],
     weaknesses: ["Easily distracted", "Avoids seriousness", "Needs attention"],
     taglines: ["Life's a stage, and I'm buzzing.", "Too fly to be shy.", "Loud, proud, and funny.", "Oops, did I cause chaos again?", "You hear me before you see me."]
