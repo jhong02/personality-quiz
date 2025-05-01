@@ -152,7 +152,15 @@ export default function About() {
               </div>
             </div>
 
-            <button className="restart-btn" onClick={() => setSelectedBug(null)}>Close</button>
+            <button
+              className="restart-btn"
+              onClick={() => {
+                clickSound.current.currentTime = 0;
+                clickSound.current.play();
+                setSelectedBug(null);
+              }}
+            >Close
+          </button>
           </div>
         </div>
       )}
