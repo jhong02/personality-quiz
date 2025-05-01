@@ -178,7 +178,7 @@ const bugs = [
     title: "The Performer",
     description: "Buzzes with energy and charm. Center of attention and full of jokes.",
     besties: ["Bee", "Grasshopper", "Centipede", "Worm", "Beetle"],
-    enemies: ["Scorpion", "Moth", "Roly-Poly"],
+    enemies: ["Scorpion", "Moth", "Roly-Poly", "Ant"],
     image: "dragonfly.png",
     strengths: ["Fun-loving", "Spontaneous", "Captivates a crowd"],
     weaknesses: ["Easily distracted", "Avoids seriousness", "Needs attention"],
