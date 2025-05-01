@@ -172,28 +172,24 @@ export default function QuizChatroom({ username }) {
   
   return (
     <>
-      <button
-        style={{
-          position: 'fixed',
-          top: 10,
-          right: 10,
-          padding: '8px 12px',
-          backgroundColor: '#444',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '6px',
-          fontSize: '0.9rem',
-          zIndex: 9999,
-          cursor: 'pointer'
-        }}
-        onClick={() => {
-          const mockBug = bugs.find(b => b.name === 'Beetle');
-          setMatchedBug(mockBug);
-          setShowResult(true);
-        }}
-      >
-        Skip to Result
-      </button>
+<button
+  style={{
+    position: 'fixed',
+    top: 10,
+    right: 10,
+    padding: '8px 12px',
+    backgroundColor: '#444',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '6px',
+    fontSize: '0.9rem',
+    zIndex: 9999,
+    cursor: 'pointer'
+  }}
+  onClick={handleSkipToResult}
+>
+  Skip to Result
+</button>
   
       <div className="chat-messages">
         {chats.map((msg, index) => (

@@ -6,6 +6,8 @@ import '../styles/bugcard.css';
 import '../styles/bugmodal.css';
 import animalImage from '../assets/images/animal-list.png';
 import tempBugImage from '../assets/images/tempbugs.webp';
+import usagiImage from '../assets/images/usagi.jpg';
+import usagiSound from '../assets/sounds/usagisound.mp3';
 import bugData from '../data/bugs';
 import LoadingScreen from '../components/LoadingScreen';
 import creatureBagSound from '../assets/sounds/creature-bag-open.wav';
@@ -17,10 +19,12 @@ export default function About() {
   const [showCreatures, setShowCreatures] = useState(false);
   const [loading, setLoading] = useState(true);
   const [selectedBug, setSelectedBug] = useState(null);
+  const [showUsagi, setShowUsagi] = useState(false);
 
   const bagSound = useRef(new Audio(creatureBagSound));
   const clickSound = useRef(new Audio(buttonClickSound));
   const bugButtonSfx = useRef(new Audio(bugButtonSound));
+  const usagiAudio = useRef(new Audio(usagiSound));
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
@@ -39,6 +43,15 @@ export default function About() {
     setShowCreatures(true);
   };
 
+  const handleUsagiClick = () => {
+    usagiAudio.current.currentTime = 0;
+    usagiAudio.current.play();
+    setShowUsagi(true);
+    setTimeout(() => {
+      setShowUsagi(false);
+    }, 1100);
+  };
+  
   if (loading) return <LoadingScreen />;
 
   return (
@@ -143,6 +156,22 @@ export default function About() {
           </div>
         </div>
       )}
+
+      {/* Usagi Modal */}
+      {showUsagi && (
+        <div className="usagi-modal" onClick={() => setShowUsagi(false)}>
+          <div className="usagi-card" onClick={(e) => e.stopPropagation()}>
+            <img src={usagiImage} alt="usagi" className="usagi-img" />
+          </div>
+        </div>
+      )}
+
+      {/* Button at page bottom */}
+      <div className="secret-button-bottom-wrapper">
+        <div className="secret-button-inner">
+          <button className="secret-button" onClick={handleUsagiClick}></button>
+        </div>
+      </div>
     </div>
   );
 }

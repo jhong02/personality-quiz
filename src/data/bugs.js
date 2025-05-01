@@ -29,6 +29,7 @@ const bugs = [
     description: "Leads the colony with confidence and drive. Loves structure and gets things done—efficiently.",
     besties: ["Scorpion", "Mosquito", "Stick Bug", "Spider"],
     enemies: ["Butterfly", "Leaf Bug", "Fly"],
+    image: "ant.webp",
     strengths: ["Strong leadership skills", "Always on schedule", "Logical problem solver"],
     weaknesses: ["Can be bossy", "Too results-focused", "Struggles with emotional messes"],
     taglines: ["Let's get to work.", "Plans before pals.", "Efficiency is love.", "If you're not 10 minutes early, you're late.", "Stop lollygagging."]
@@ -51,6 +52,7 @@ const bugs = [
     description: "Quiet and dreamy. Glows with inner wisdom and emotional depth.",
     besties: ["Scorpion", "Shrimp", "Leaf Bug", "Spider"],
     enemies: ["Grasshopper", "Mosquito", "Fly", "Beetle"],
+    image: "moth.png",
     strengths: ["Empathetic", "Reflective", "Mysteriously wise"],
     weaknesses: ["Emotionally overloaded", "Too withdrawn", "Overly idealistic"],
     taglines: ["Drawn to the light... but also the shadows.", "Whispers, not roars.", "Feels deeply, hides gently.", "Dreaming with wings.", "Introvert with moonlight vibes."]
@@ -73,6 +75,7 @@ const bugs = [
     description: "Builds the hive and keeps everyone connected. Leads with kindness and energy.",
     besties: ["Leaf Bug", "Fly", "Moth", "Ladybug"],
     enemies: ["Scorpion", "Spider", "Roly-Poly"],
+    image: "bee.webp",
     strengths: ["Brings the group together", "Emotionally intelligent", "Motivates others with kindness"],
     weaknesses: ["Overcommits to helping", "Avoids conflict", "Can be too idealistic"],
     taglines: ["Let's all work together!", "You need a hug and a plan.", "Crisis? I brought snacks and support.", "Queen bee energy (minus the ego).", "Kindness is my buzzword."]
@@ -107,6 +110,7 @@ const bugs = [
     description: "Soft, dependable, and quietly fierce. Loves cozy spaces and loyal friends.",
     besties: ["Bee", "Worm", "Roly-Poly", "Leaf Bug"],
     enemies: ["Stick Bug", "Grasshopper", "Ant", "Beetle"],
+    image: "ladybug.webp",
     strengths: ["Loyal", "Supportive", "Calming presence"],
     weaknesses: ["Avoids confrontation", "Easily overlooked", "Too self-sacrificing"],
     taglines: ["Soft shell, strong soul.", "The cozy crusader.", "Not loud, but lasting.", "Cares deeply, hides it neatly.", "Comfort is my combat."]
