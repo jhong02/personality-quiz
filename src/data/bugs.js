@@ -65,7 +65,7 @@ const bugs = [
     "title": "The Idealist",
     "description": "Shy but strong in their values. Blends in, but holds deep feelings and dreams.",
     "besties": ["Grasshopper", "Ladybug", "Moth", "Shrimp"],
-    "enemies": ["Ant", "Beetle", "Mosquito", "Ant"], // unchanged (still 4 total even with duplicate)
+    "enemies": ["Ant", "Beetle", "Mosquito"],
     "image": null,
     "strengths": ["Gentle-hearted", "Imaginative", "Values-driven"],
     "weaknesses": ["Conflict avoidant", "Too sensitive", "Easily discouraged"],
