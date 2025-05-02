@@ -42,7 +42,7 @@ const bugs = [
     "description": "Loves to think out loud. Bends the rules and sees the world from odd angles.",
     "besties": ["Beetle", "Moth", "Shrimp", "Spider"],
     "enemies": ["Ladybug", "Roly-Poly", "Worm"],
-    "image": null,
+    "image": "stickbug.png",
     "strengths": ["Wild imagination", "Naturally witty", "Fearless brainstormer"],
     "weaknesses": ["Never finishes projects", "Constantly pokes holes in ideas", "Gets bored easily"],
     "taglines": ["Why not... upside down?", "Chaos, but with charm.", "I made this. Also that. Also forgot both.", "Unhinged genius energy.", "Debate is my cardio."]
@@ -66,7 +66,7 @@ const bugs = [
     "description": "Shy but strong in their values. Blends in, but holds deep feelings and dreams.",
     "besties": ["Grasshopper", "Ladybug", "Moth", "Shrimp"],
     "enemies": ["Ant", "Beetle", "Mosquito"],
-    "image": null,
+    "image": "leafbug.png",
     "strengths": ["Gentle-hearted", "Imaginative", "Values-driven"],
     "weaknesses": ["Conflict avoidant", "Too sensitive", "Easily discouraged"],
     "taglines": ["Soft but unshakable.", "I'm fine. (Not fine.)", "Quiet rebel energy.", "Leaf me alone.", "The dream is alive."]
@@ -138,7 +138,7 @@ const bugs = [
     "description": "Digs deep in relationships. Supports others and likes building structure from the ground up.",
     "besties": ["Bee", "Grasshopper", "Ladybug", "Roly-Poly"],
     "enemies": ["Beetle", "Scorpion", "Stick Bug"],
-    "image": null,
+    "image": "worm.png",
     "strengths": ["Caring", "Patient", "Hard-working"],
     "weaknesses": ["Overextends for others", "Fears conflict", "Avoids attention"],
     "taglines": ["I dig you. Literally.", "Underground and underappreciated.", "Here to help, not to shine.", "Quiet strength runs deep.", "Structure, from the soil up."]
@@ -162,7 +162,7 @@ const bugs = [
     "description": "Loves nature, freedom, and simplicity. Expresses through movement and sound.",
     "besties": ["Beetle", "Centipede", "Leaf Bug", "Shrimp", "Worm"],
     "enemies": ["Ant", "Mosquito", "Bee", "Roly-Poly"], // updated
-    "image": null,
+    "image": "grasshopper.png",
     "strengths": ["Creative", "Free-spirited", "Appreciates beauty"],
     "weaknesses": ["Avoids routine", "Gets lost in feelings", "Too passive"],
     "taglines": ["Jumping into vibes only.", "Tunes, not timelines.", "Feel first, leap later.", "Nature's lo-fi artist.", "Graceful chaos."]

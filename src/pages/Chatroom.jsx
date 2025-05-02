@@ -27,7 +27,7 @@ const botResponses = [
   "i have a sunburn", "sweet treat", "UNNAAAAAA",
   "If you're good at something, never do it for free!",
   "THEY DON'T WANT OUR LOVE TO EXIST!", "jam", "yam", "i love usagi",
-  "*crawls up your arm*", "should i go get gas for my car tomorrow?"
+  "*crawls up your arm*", "should i go get gas for my car tomorrow?", "Get back to me later",
 ];
 
 export default function Chatroom() {
