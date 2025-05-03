@@ -6,7 +6,7 @@ import Chatroom from './pages/Chatroom';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/The-Terrarium">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
