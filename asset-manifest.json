@@ -1,9 +1,25 @@
 {
   "files": {
     "main.css": "/The-Terrarium/static/css/main.d0fbe86c.css",
-    "main.js": "/The-Terrarium/static/js/main.1a52f0df.js",
+    "main.js": "/The-Terrarium/static/js/main.e739b9d8.js",
     "static/js/453.11c1d186.chunk.js": "/The-Terrarium/static/js/453.11c1d186.chunk.js",
     "static/media/KosugiMaru-Regular.ttf": "/The-Terrarium/static/media/KosugiMaru-Regular.dc10c3fc0d79e669c966.ttf",
+    "static/media/Bee-bug-profile.png": "/The-Terrarium/static/media/Bee-bug-profile.ade899efb9f49a22dffc.png",
+    "static/media/Scorpion-bug-profile.png": "/The-Terrarium/static/media/Scorpion-bug-profile.aeba07c1cbd71999a565.png",
+    "static/media/Moth-bug-profile.png": "/The-Terrarium/static/media/Moth-bug-profile.e009d30d93261ae569f7.png",
+    "static/media/Centipede-bug-profile.png": "/The-Terrarium/static/media/Centipede-bug-profile.1e4d7b6764252c167890.png",
+    "static/media/Spider-bug-profile.png": "/The-Terrarium/static/media/Spider-bug-profile.dc08600915e73e818a70.png",
+    "static/media/Dragon Fly-bug-profile.png": "/The-Terrarium/static/media/Dragon Fly-bug-profile.4908aab78693bdc5e2df.png",
+    "static/media/Beetle-bug-profile.png": "/The-Terrarium/static/media/Beetle-bug-profile.1c3597dfe5f3920d3de3.png",
+    "static/media/Grasshopper-bug-profile.png": "/The-Terrarium/static/media/Grasshopper-bug-profile.8cdc74b85faa913fded0.png",
+    "static/media/Ant-bug-profile.png": "/The-Terrarium/static/media/Ant-bug-profile.ddbcab41db381ca66dde.png",
+    "static/media/Shrimp-bug-profile.png": "/The-Terrarium/static/media/Shrimp-bug-profile.3a6b03a805fb7472d4c1.png",
+    "static/media/Ladybug-bug-profile.png": "/The-Terrarium/static/media/Ladybug-bug-profile.442933d9dac6978953ef.png",
+    "static/media/Mosquito-bug-profile.png": "/The-Terrarium/static/media/Mosquito-bug-profile.a2c01ac11850f0656bb3.png",
+    "static/media/Leaf Bug-bug-profile.png": "/The-Terrarium/static/media/Leaf Bug-bug-profile.0de6b8cb380bb45d336e.png",
+    "static/media/Stick Bug-bug-profile.png": "/The-Terrarium/static/media/Stick Bug-bug-profile.79924c01a6ce18531d0c.png",
+    "static/media/Roly-Poly-bug-profile.png": "/The-Terrarium/static/media/Roly-Poly-bug-profile.fc6585cde977fd020f0b.png",
+    "static/media/Worm-bug-profile.png": "/The-Terrarium/static/media/Worm-bug-profile.62e7de8e70aa851ae888.png",
     "static/media/moth.png": "/The-Terrarium/static/media/moth.4a14acf4c3d9ebdff6cb.png",
     "static/media/spider.png": "/The-Terrarium/static/media/spider.7fca3d31b71a4a2c5e15.png",
     "static/media/dragonfly.png": "/The-Terrarium/static/media/dragonfly.c33a3ab430d0c74fc4ee.png",
@@ -48,11 +64,11 @@
     "static/media/button-click.wav": "/The-Terrarium/static/media/button-click.efda0549ce91c220385f.wav",
     "index.html": "/The-Terrarium/index.html",
     "main.d0fbe86c.css.map": "/The-Terrarium/static/css/main.d0fbe86c.css.map",
-    "main.1a52f0df.js.map": "/The-Terrarium/static/js/main.1a52f0df.js.map",
+    "main.e739b9d8.js.map": "/The-Terrarium/static/js/main.e739b9d8.js.map",
     "453.11c1d186.chunk.js.map": "/The-Terrarium/static/js/453.11c1d186.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d0fbe86c.css",
-    "static/js/main.1a52f0df.js"
+    "static/js/main.e739b9d8.js"
   ]
 }
