@@ -150,16 +150,6 @@ export default function QuizChatroom({ username }) {
     startIntro();
   };
 
-  const handleSkipToResult = () => {
-    const mbti = calculateMBTI(mbtiScores);
-    const result = bugs.find(bug => bug.mbti === mbti || bug.mbti === 'ENFP');
-    setMatchedBug(result);
-    resultSound.current.play();
-    setShowResult(true);
-    setChats(prev => [...prev, { sender: 'mysterious_bug', text: `🌟 Personality Quiz Complete! 🌟` }]);
-    receivedSound.current.play();
-  };
-
   const handleDownload = async () => {
     if (!hiddenCardRef.current) return;
     const canvas = await html2canvas(hiddenCardRef.current, {
@@ -175,25 +165,6 @@ export default function QuizChatroom({ username }) {
 
   return (
     <>
-      <button
-        style={{
-          position: 'fixed',
-          top: 10,
-          right: 10,
-          padding: '8px 12px',
-          backgroundColor: '#444',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '6px',
-          fontSize: '0.9rem',
-          zIndex: 9999,
-          cursor: 'pointer'
-        }}
-        onClick={handleSkipToResult}
-      >
-        Skip to Result
-      </button>
-
       <div className="chat-messages">
         {chats.map((msg, index) => (
           <div key={index} className={`message-wrapper ${msg.sender === 'You' ? 'right-wrapper' : 'left-wrapper'} slide-up`}>
