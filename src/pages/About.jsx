@@ -10,6 +10,7 @@ import usagiImage from '../assets/images/usagi.jpg';
 import usagiSound from '../assets/sounds/usagisound.mp3';
 import bugData from '../data/bugs';
 import bugImages from '../data/bugImageMap';
+import bugDownloadMap from '../data/bugDownloadMap';
 import LoadingScreen from '../components/LoadingScreen';
 import creatureBagSound from '../assets/sounds/creature-bag-open.wav';
 import buttonClickSound from '../assets/sounds/button-click.wav';
@@ -31,6 +32,15 @@ export default function About() {
     const timer = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timer);
   }, []);
+
+  const handleDownloadBug = () => {
+    if (!selectedBug || !bugDownloadMap[selectedBug.name]) return;
+
+    const link = document.createElement('a');
+    link.href = bugDownloadMap[selectedBug.name];
+    link.download = `${selectedBug.name}-bug-profile.png`;
+    link.click();
+  };
 
   const goBack = () => {
     clickSound.current.currentTime = 0;
@@ -153,14 +163,13 @@ export default function About() {
               </div>
             </div>
 
-            <button
-              className="restart-btn"
-              onClick={() => {
-                clickSound.current.currentTime = 0;
-                clickSound.current.play();
-                setSelectedBug(null);
-              }}
-            >Close</button>
+            <button className="restart-btn" onClick={() => {
+              clickSound.current.currentTime = 0;
+              clickSound.current.play();
+              setSelectedBug(null);
+            }}>Close</button>
+
+            <button className="restart-btn" onClick={handleDownloadBug}>Download Bug</button>
           </div>
         </div>
       )}
