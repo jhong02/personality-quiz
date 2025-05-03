@@ -5,7 +5,18 @@ import QuizChatroom from './QuizChatroom';
 import QuizNotification from './QuizNotification';
 import LoadingScreen from '../components/LoadingScreen';
 
-import userIcon from '../assets/images/user1.png';
+// Import profile pictures
+import pfp1 from '../assets/images/pfp/pfp1.jpg';
+import pfp2 from '../assets/images/pfp/pfp2.jpg';
+import pfp3 from '../assets/images/pfp/pfp3.jpg';
+import pfp4 from '../assets/images/pfp/pfp4.jpg';
+import pfp5 from '../assets/images/pfp/pfp5.jpg';
+import pfp6 from '../assets/images/pfp/pfp6.jpg';
+import pfp7 from '../assets/images/pfp/pfp7.jpg';
+import pfp8 from '../assets/images/pfp/pfp8.jpg';
+import pfp9 from '../assets/images/pfp/pfp9.jpg';
+import pfp10 from '../assets/images/pfp/pfp10.jpg';
+
 import enterSound from '../assets/sounds/enter-sound.wav';
 import messageSent from '../assets/sounds/message-sent.wav';
 import messageReceived from '../assets/sounds/message-received.wav';
@@ -17,6 +28,19 @@ const chatUsernames = [
   'greetur_', 'yerba985', 'Jake235', 'wagagaga',
   'kroniiLover', 'mysterious_bug'
 ];
+
+const profilePics = {
+  'fungai_5252': pfp1,
+  'goobi': pfp2,
+  'smider55': pfp3,
+  'green_bone4': pfp4,
+  'greetur_': pfp5,
+  'yerba985': pfp6,
+  'Jake235': pfp7,
+  'wagagaga': pfp8,
+  'kroniiLover': pfp9,
+  'mysterious_bug': pfp10
+};
 
 const botResponses = [
   "Whatever...", "I miss goobi (my cat)", "Allo!",
@@ -144,7 +168,7 @@ export default function Chatroom() {
   return (
     <div className="chat-container">
       <aside className="sidebar">
-        <Link to="/" className="logo">🪲 [ The Terrarium ]</Link>
+        <Link to="/" className="logo">[ The Terrarium ]</Link>
         <nav className="chatrooms">
           <p>Chatrooms</p>
           <ul>
@@ -154,7 +178,7 @@ export default function Chatroom() {
                 className={`chatroom-item ${currentChat === user ? 'active' : ''}`}
                 onClick={() => openChat(user)}
               >
-                <img src={userIcon} alt={`${user} icon`} className="user-icon" />
+                <img src={profilePics[user]} alt={`${user} icon`} className="user-icon" />
                 {user}
               </li>
             ))}
@@ -222,15 +246,14 @@ export default function Chatroom() {
       </main>
 
       {showInvite && (
-  <QuizNotification
-    onClick={handleInviteClick}
-    onIgnore={() => {
-      setShowInvite(false);
-      setTimeout(() => setShowInvite(true), 3000);
-    }}
-  />
-)}
-
+        <QuizNotification
+          onClick={handleInviteClick}
+          onIgnore={() => {
+            setShowInvite(false);
+            setTimeout(() => setShowInvite(true), 3000);
+          }}
+        />
+      )}
     </div>
   );
 }

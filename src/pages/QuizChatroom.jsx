@@ -37,9 +37,11 @@ export default function QuizChatroom({ username }) {
   const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
   const scrollToBottom = () => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (!showResult) {
+      chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
-
+  
   useEffect(() => {
     scrollToBottom();
   }, [chats, typing, loadingFinal]);
@@ -130,6 +132,11 @@ export default function QuizChatroom({ username }) {
       setShowResult(true);
       setChats(prev => [...prev, { sender: 'mysterious_bug', text: `🌟 Personality Quiz Complete! 🌟` }]);
       receivedSound.current.play();
+
+      // sets user to the top of the result card
+      setTimeout(() => {
+        cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
   };
 

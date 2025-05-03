@@ -41,28 +41,30 @@ export default function Home() {
 
   return (
     <div className="home-bg">
-      <div className="landing-container">
-        <img src={topTitle} alt="Top Title" className="title-image" />
-        <img src={logo2} alt="Terrarium Scene" className="logo2-image" />
-        <img src={bottomTitle} alt="Bottom Title" className="title-image" />
-      </div>
-
-      <div className="landing-footer">
-        <p>A fun little critter quiz!</p>
-        <input
-          id="usernameInput"
-          maxLength="25"
-          placeholder="Enter your name..."
-          className="name-input"
-        />
-        <button className="enter-btn" onClick={storeUsername}>Enter!</button>
-        <div className="help-btn-wrapper">
-          <button className="about-btn landing-help" onClick={goToAbout}>?</button>
+      <div className="home-wrapper">
+        <div className="landing-container">
+          <img src={topTitle} alt="Top Title" className="title-image" />
+          <img src={logo2} alt="Terrarium Scene" className="logo2-image" />
+          <img src={bottomTitle} alt="Bottom Title" className="title-image" />
         </div>
-        <div className={`name-warning ${showWarning ? 'visible' : ''}`}>
-          Please enter your name! AAuuUGH!!
+  
+        <div className="landing-footer">
+          <p>A fun little critter quiz!</p>
+          <input
+            id="usernameInput"
+            maxLength="25"
+            placeholder="Enter your name..."
+            className="name-input"
+          />
+          <button className="enter-btn" onClick={storeUsername}>Enter!</button>
+          <div className="help-btn-wrapper">
+            <button className="about-btn landing-help" onClick={goToAbout}>?</button>
+          </div>
+          <div className={`name-warning ${showWarning ? 'visible' : ''}`}>
+            Please enter your name! AAuuUGH!!
+          </div>
         </div>
       </div>
     </div>
-  );
+  );  
 }
