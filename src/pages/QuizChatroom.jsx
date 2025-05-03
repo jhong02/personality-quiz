@@ -36,15 +36,15 @@ export default function QuizChatroom({ username }) {
   const quizProgress = Math.max(0, Math.min((currentQuestionIndex - introData.length) / quizQuestions.length, 1)) * 100;
   const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
-  const scrollToBottom = () => {
+  const scrollToBottom = useCallback(() => {
     if (!showResult) {
       chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, [showResult]);  
   
   useEffect(() => {
     scrollToBottom();
-  }, [chats, typing, loadingFinal]);
+  }, [chats, typing, loadingFinal, scrollToBottom]);  
 
   const showTyping = useCallback(async () => {
     setTyping(true);
@@ -156,6 +156,7 @@ export default function QuizChatroom({ username }) {
     const mbti = calculateMBTI(mbtiScores);
     const result = bugs.find(bug => bug.mbti === mbti || bug.mbti === 'ENFP');
     setMatchedBug(result);
+    resultSound.current.play();
     setShowResult(true);
     setChats(prev => [...prev, { sender: 'mysterious_bug', text: `🌟 Personality Quiz Complete! 🌟` }]);
     receivedSound.current.play();
