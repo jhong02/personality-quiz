@@ -6,7 +6,7 @@ const bugs = [
     "description": "Strategic, focused, always planning ten steps ahead. Prefers alone time to scheme out big moves.",
     "besties": ["Ant", "Centipede", "Moth", "Spider"],
     "enemies": ["Dragon Fly", "Bee", "Worm", "Ladybug"], // updated
-    "image": null,
+    "image": "scorpion.png",
     "strengths": ["Master planner", "Emotionally detached in crises", "Independent and focused"],
     "weaknesses": ["Overthinks everything", "Can come off cold", "Keeps others at arm's length"],
     "taglines": ["Silently judging, actively plotting.", "I foresaw this.", "Plans within plans within plans.", "Trust issues, but make it tactical.", "I work best in the shadows."]
@@ -69,7 +69,7 @@ const bugs = [
     "image": "leafbug.png",
     "strengths": ["Gentle-hearted", "Imaginative", "Values-driven"],
     "weaknesses": ["Conflict avoidant", "Too sensitive", "Easily discouraged"],
-    "taglines": ["Soft but unshakable.", "I'm fine. (Not fine.)", "Quiet rebel energy.", "Leaf me alone.", "The dream is alive."]
+    "taglines": ["Soft but unshakable.", "I'm fine. (Not fine.)", "Bingo nose", "Leaf me alone.", "The dream is alive."]
   },
   {
     "mbti": "ENFJ",
@@ -126,7 +126,7 @@ const bugs = [
     "description": "Direct, efficient, and not afraid to sting. Demands results.",
     "besties": ["Ant", "Beetle", "Dragon Fly", "Roly-Poly"],
     "enemies": ["Leaf Bug", "Moth", "Spider", "Ladybug"], // updated
-    "image": null,
+    "image": "mosquito.png",
     "strengths": ["Straightforward", "Decisive", "Gets things done"],
     "weaknesses": ["Too blunt", "Overbearing", "Dismisses emotions"],
     "taglines": ["Results first, feelings later.", "I came. I bit. I conquered.", "Order over chaos.", "No-nonsense buzz.", "I mean business (and buzzing)."]
@@ -150,7 +150,7 @@ const bugs = [
     "description": "Moves swiftly and carefully. Quiet observer with sharp reflexes and instincts.",
     "besties": ["Ant", "Bee", "Beetle", "Grasshopper", "Scorpion"],
     "enemies": ["Worm", "Shrimp", "Dragon Fly", "Ladybug"], // updated
-    "image": null,
+    "image": "centipede.png",
     "strengths": ["Quick thinker", "Cool under pressure", "Independent"],
     "weaknesses": ["Aloof", "Emotionally distant", "Avoids commitment"],
     "taglines": ["Many legs, zero hesitation.", "Silent but strategic.", "Think fast. Move faster.", "No drama, just action.", "Loner with a mission."]

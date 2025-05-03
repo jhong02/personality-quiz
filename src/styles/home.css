@@ -225,3 +225,32 @@
     transform: rotate(360deg);
   }
 }
+
+.title-image {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  margin: 15px 0;
+  display: block;
+}
+
+@keyframes twoFrameTwist {
+  0% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+  100% { transform: rotate(-2deg); }
+}
+
+.title-image {
+  width: 260px;
+  height: auto;
+  display: block;
+  margin: 5px auto;
+  animation: twoFrameTwist 1.2s steps(1, end) infinite;
+  transform-origin: center;
+}
+
+.logo2-image {
+  width: 160px;
+  height: auto;
+  margin: 10px 0;
+}

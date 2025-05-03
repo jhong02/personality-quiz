@@ -1,7 +1,9 @@
 import '../styles/home.css';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
-import logo from '../assets/images/logo.png';
+import logo2 from '../assets/images/logo2.png';
+import topTitle from '../assets/images/toptitle.png';
+import bottomTitle from '../assets/images/bottletitle.png';
 import LoadingScreen from '../components/LoadingScreen';
 import buttonClickSound from '../assets/sounds/button-click.wav';
 
@@ -23,13 +25,12 @@ export default function Home() {
       setTimeout(() => setShowWarning(false), 2000);
       return;
     }
-  
+
     buttonClick.current.currentTime = 0;
     buttonClick.current.play(); // 🔊 play sound
     localStorage.setItem("username", input);
     navigate('/chatroom'); // ➡️ navigate right away
   };
-  
 
   const goToAbout = () => {
     buttonClick.current.play();
@@ -41,20 +42,25 @@ export default function Home() {
   return (
     <div className="home-bg">
       <div className="landing-container">
-        <h1>Welcome to...</h1>
-        <img src={logo} alt="Terrarium" className="landing-image" />
-        <h2>The Terrarium</h2>
+        <img src={topTitle} alt="Top Title" className="title-image" />
+        <img src={logo2} alt="Terrarium Scene" className="logo2-image" />
+        <img src={bottomTitle} alt="Bottom Title" className="title-image" />
       </div>
 
       <div className="landing-footer">
         <p>A fun little critter quiz!</p>
-        <input id="usernameInput" maxLength="25" placeholder="Enter your name..." className="name-input" />
+        <input
+          id="usernameInput"
+          maxLength="25"
+          placeholder="Enter your name..."
+          className="name-input"
+        />
         <button className="enter-btn" onClick={storeUsername}>Enter!</button>
         <div className="help-btn-wrapper">
           <button className="about-btn landing-help" onClick={goToAbout}>?</button>
         </div>
         <div className={`name-warning ${showWarning ? 'visible' : ''}`}>
-          Please enter your name! AAUGH!!
+          Please enter your name! AAuuUGH!!
         </div>
       </div>
     </div>
