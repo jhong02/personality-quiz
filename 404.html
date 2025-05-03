@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; URL=/" />
+    <meta charset="utf-8" />
+    <script>
+      // Redirect to root with path preserved (so React can handle it)
+      const redirectTo = window.location.pathname.replace(/^\/The-Terrarium/, '');
+      window.location.replace("/The-Terrarium/#" + redirectTo);
+    </script>
   </head>
   <body></body>
 </html>
