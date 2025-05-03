@@ -9,6 +9,7 @@ import tempBugImage from '../assets/images/tempbugs.webp';
 import usagiImage from '../assets/images/usagi.jpg';
 import usagiSound from '../assets/sounds/usagisound.mp3';
 import bugData from '../data/bugs';
+import bugImages from '../data/bugImageMap';
 import LoadingScreen from '../components/LoadingScreen';
 import creatureBagSound from '../assets/sounds/creature-bag-open.wav';
 import buttonClickSound from '../assets/sounds/button-click.wav';
@@ -51,7 +52,7 @@ export default function About() {
       setShowUsagi(false);
     }, 1100);
   };
-  
+
   if (loading) return <LoadingScreen />;
 
   return (
@@ -86,7 +87,7 @@ export default function About() {
             >
               <img
                 className="bug-mini-img"
-                src={bug.image ? `/assets/images/${bug.image}` : tempBugImage}
+                src={bug.image ? bugImages[bug.image] || tempBugImage : tempBugImage}
                 alt={bug.name}
               />
               <h3 className="bug-mini-name">{bug.name}</h3>
@@ -99,7 +100,7 @@ export default function About() {
         <div className="bug-modal-overlay" onClick={() => setSelectedBug(null)}>
           <div className="bug-modal-card" onClick={(e) => e.stopPropagation()}>
             <h2 className="bug-name-title">{selectedBug.name} – <em>{selectedBug.title}</em></h2>
-            <img className="bug-img" src={selectedBug.image ? `/assets/images/${selectedBug.image}` : tempBugImage} alt={selectedBug.name} />
+            <img className="bug-img" src={selectedBug.image ? bugImages[selectedBug.image] || tempBugImage : tempBugImage} alt={selectedBug.name} />
             <p className="desc"><strong>Description:</strong> {selectedBug.description}</p>
 
             <div className="traits-flex">
@@ -129,7 +130,7 @@ export default function About() {
                   const bug = bugData.find(b => b.name === name);
                   return (
                     <div className="friend-item" key={name}>
-                      <img src={bug?.image ? `/assets/images/${bug.image}` : tempBugImage} alt={name} className="friend-icon" />
+                      <img src={bug?.image ? bugImages[bug.image] || tempBugImage : tempBugImage} alt={name} className="friend-icon" />
                       <span>{name}</span>
                     </div>
                   );
@@ -144,7 +145,7 @@ export default function About() {
                   const bug = bugData.find(b => b.name === name);
                   return (
                     <div className="friend-item" key={name}>
-                      <img src={bug?.image ? `/assets/images/${bug.image}` : tempBugImage} alt={name} className="friend-icon" />
+                      <img src={bug?.image ? bugImages[bug.image] || tempBugImage : tempBugImage} alt={name} className="friend-icon" />
                       <span>{name}</span>
                     </div>
                   );
@@ -159,13 +160,11 @@ export default function About() {
                 clickSound.current.play();
                 setSelectedBug(null);
               }}
-            >Close
-          </button>
+            >Close</button>
           </div>
         </div>
       )}
 
-      {/* Usagi Modal */}
       {showUsagi && (
         <div className="usagi-modal" onClick={() => setShowUsagi(false)}>
           <div className="usagi-card" onClick={(e) => e.stopPropagation()}>
@@ -174,7 +173,6 @@ export default function About() {
         </div>
       )}
 
-      {/* Button at page bottom */}
       <div className="secret-button-bottom-wrapper">
         <div className="secret-button-inner">
           <button className="secret-button" onClick={handleUsagiClick}></button>

@@ -1,5 +1,9 @@
+// src/components/BugCard.jsx
+import bugImages from '../data/bugImageMap';
+import tempBugImage from '../assets/images/tempbugs.webp';
+
 const BugCard = ({ bug, onSelect }) => {
-  const imgSrc = bug.image ? `/assets/images/${bug.image}` : '/assets/images/tempbugs.webp';
+  const imgSrc = bug.image ? bugImages[bug.image] || tempBugImage : tempBugImage;
 
   return (
     <div className="bug-card" onClick={() => onSelect(bug)}>
