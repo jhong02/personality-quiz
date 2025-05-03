@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/The-Terrarium/static/css/main.d0fbe86c.css",
+    "main.js": "/The-Terrarium/static/js/main.5afb185d.js",
+    "static/js/453.47d949b8.chunk.js": "/The-Terrarium/static/js/453.47d949b8.chunk.js",
+    "static/media/KosugiMaru-Regular.ttf": "/The-Terrarium/static/media/KosugiMaru-Regular.dc10c3fc0d79e669c966.ttf",
+    "static/media/bottletitle.png": "/The-Terrarium/static/media/bottletitle.0569c24a1b3d36709295.png",
+    "static/media/logo2.png": "/The-Terrarium/static/media/logo2.c0afb7f7a88d7e0b8d72.png",
+    "static/media/animal-list.png": "/The-Terrarium/static/media/animal-list.9edaafe2396767be30f1.png",
+    "static/media/toptitle.png": "/The-Terrarium/static/media/toptitle.c0b5dce09c149e8a0c69.png",
+    "static/media/quiz-result.wav": "/The-Terrarium/static/media/quiz-result.9b9d3b65658b8582fcde.wav",
+    "static/media/creature-bag-open.wav": "/The-Terrarium/static/media/creature-bag-open.f5e8e9622aabc5763924.wav",
+    "static/media/bug-button.wav": "/The-Terrarium/static/media/bug-button.9b098e5e4752a184c32d.wav",
+    "static/media/enter-sound.wav": "/The-Terrarium/static/media/enter-sound.3192d2acaaee96de9b6f.wav",
+    "static/media/usagi.jpg": "/The-Terrarium/static/media/usagi.5db495a9c1ead17e54a5.jpg",
+    "static/media/tempbugs.webp": "/The-Terrarium/static/media/tempbugs.2b0a56f4471530d42874.webp",
+    "static/media/notification-sound.wav": "/The-Terrarium/static/media/notification-sound.56357bfdae813b8362aa.wav",
+    "static/media/message-sent.wav": "/The-Terrarium/static/media/message-sent.50ab56754fcb143a88fd.wav",
+    "static/media/pfp9.jpg": "/The-Terrarium/static/media/pfp9.a89fa25a446f0bfb54f2.jpg",
+    "static/media/pfp8.jpg": "/The-Terrarium/static/media/pfp8.a88d587edfeb051145c5.jpg",
+    "static/media/pfp3.jpg": "/The-Terrarium/static/media/pfp3.75b98720d7f575951c3a.jpg",
+    "static/media/pfp4.jpg": "/The-Terrarium/static/media/pfp4.9d39343336af8c47ded7.jpg",
+    "static/media/pfp1.jpg": "/The-Terrarium/static/media/pfp1.13e09924d425c94f566f.jpg",
+    "static/media/usagisound.mp3": "/The-Terrarium/static/media/usagisound.d35fd302d2f65c648cb9.mp3",
+    "static/media/pfp6.jpg": "/The-Terrarium/static/media/pfp6.37834f9b5ff834f7a987.jpg",
+    "static/media/pfp10.jpg": "/The-Terrarium/static/media/pfp10.7dd6011cd850db08d811.jpg",
+    "static/media/pfp5.jpg": "/The-Terrarium/static/media/pfp5.f275d6ea2ef04d126092.jpg",
+    "static/media/pfp7.jpg": "/The-Terrarium/static/media/pfp7.685c04fb5cc0c2a102a6.jpg",
+    "static/media/message-received.wav": "/The-Terrarium/static/media/message-received.3934c56c27082905d6ba.wav",
+    "static/media/button-click.wav": "/The-Terrarium/static/media/button-click.efda0549ce91c220385f.wav",
+    "index.html": "/The-Terrarium/index.html",
+    "main.d0fbe86c.css.map": "/The-Terrarium/static/css/main.d0fbe86c.css.map",
+    "main.5afb185d.js.map": "/The-Terrarium/static/js/main.5afb185d.js.map",
+    "453.47d949b8.chunk.js.map": "/The-Terrarium/static/js/453.47d949b8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d0fbe86c.css",
+    "static/js/main.5afb185d.js"
+  ]
+}
